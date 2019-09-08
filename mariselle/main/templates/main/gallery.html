@@ -1,0 +1,74 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center fixed-top mb-4" id="mainNav">
+    <div class='container'>
+        <a class="navbar-brand d-flex w-50 mr-auto js-scroll-trigger" href="{% url 'home' %}">Mariselle Website</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse w-100" id="navbarResponsive">
+            <ul class="navbar-nav w-100 justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'home' %}#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'home' %}#booking">Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'home' %}#gallery">Gallery</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gallery' %}">Exclusive</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav ml-auto w-100 justify-content-end">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid d-flex h-100 bg-dark" style="padding-top: 5rem">
+    <div class="row">
+        {% for pic in pics %}
+        <div class="col-md-3 gallery" style="padding-top: 7px;">
+            <a href="{{ pic.img.url }}">
+                <img src="{{ pic.img.url }}" class="mx-auto img-fluid img-thumbnail" alt="{{ pic.img.title }}"></a>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+    {% if pics.has_previous %}
+    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+    <a class="btn btn-outline-info mb-4" href="?page={{ pics.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% if pics.has_next %}
+    <a class="btn btn-outline-info mb-4" href="?page={{ pics.next_page_number }}">Next</a>
+    {% endif %}
+
+</div>
+
+
+{% endblock content %}
