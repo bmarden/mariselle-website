@@ -10,14 +10,16 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{% static 'bootstrap-4.3.1-dist/css/bootstrap.min.css' %}">
 
-  <!-- Grayscale css -->
+  <!-- Grayscale CSS -->
   <link rel="stylesheet" href="{% static 'grayscale/css/grayscale.css' %}">
 
-  <!-- Ashleydw lightbox https://ashleydw.github.io/lightbox/ -->
-  <link rel="stylesheet" href="{% static 'lightbox/ekko-lightbox.css' %}">
+  <!-- UniteGallery CSS  https://github.com/vvvmax/unitegallery -->
+  <link rel='stylesheet' href="{% static 'unitegallery/css/unite-gallery.css' %}" type='text/css' />
+  <link rel='stylesheet' href="{% static 'unitegallery/themes/default/ug-theme-default.css' %}" type='text/css' />
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{% static 'main/main.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
   <!-- Custom fonts for this template -->
   <link href="{% static 'grayscale/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -65,15 +67,19 @@
   <!-- Custom scripts for this template -->
   <script src="{% static 'grayscale/js/grayscale.min.js' %}"></script>
 
-  <!-- Ashleydw lightbox https://ashleydw.github.io/lightbox/ -->
-  <script src="{% static 'lightbox/ekko-lightbox.min.js' %}"></script>
+  <!-- Unite Gallery https://github.com/vvvmax/unitegallery -->
+  <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  <script type='text/javascript' src="{% static 'unitegallery/js/unitegallery.min.js' %}"></script>
+  <script type='text/javascript' src="{% static 'unitegallery/themes/default/ug-theme-default.js' %}"></script>
+  <script type='text/javascript' src="{% static 'unitegallery/themes/tiles/ug-theme-tiles.js' %}"></script>
 
-  <!-- Script used for lightbox -->
-  <script>
-    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-      event.preventDefault();
-      $(this).ekkoLightbox();
-    });
+  <!-- Unite Gallery start script -->
+  <script type="text/javascript">
+    jQuery(document).ready(function () {
+      jQuery("#gallery").unitegallery({
+        gallery_theme: "tiles"
+      });
+    }); 
   </script>
 
 </body>
