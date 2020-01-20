@@ -10,7 +10,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{% static 'bootstrap-4.3.1-dist/css/bootstrap.min.css' %}">
 
-  <!-- Grayscale CSS -->
+  <!-- Grayscale https://github.com/BlackrockDigital/startbootstrap-grayscale CSS -->
   <link rel="stylesheet" href="{% static 'grayscale/css/grayscale.css' %}">
 
   <!-- UniteGallery CSS  https://github.com/vvvmax/unitegallery -->
@@ -30,8 +30,6 @@
 
   {% block styles %}
   {% endblock %}
-  <!-- Custom CSS -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'main/main.css' %}"> -->
 
   {% if title %}
   <title>{{ title }}</title>
@@ -73,11 +71,30 @@
   <script type='text/javascript' src="{% static 'unitegallery/themes/default/ug-theme-default.js' %}"></script>
   <script type='text/javascript' src="{% static 'unitegallery/themes/tiles/ug-theme-tiles.js' %}"></script>
 
-  <!-- Unite Gallery start script -->
+  <!-- Unite Gallery start script home page -->
   <script type="text/javascript">
     jQuery(document).ready(function () {
-      jQuery("#gallery").unitegallery({
-        gallery_theme: "tiles"
+      jQuery("#galleryHome").unitegallery({
+        gallery_theme: "tiles",
+        tiles_type: "justified",
+        tiles_justified_row_height: 250
+      });
+    }); 
+  </script>
+
+  <script type="text/javascript">
+    jQuery(document).ready(function () {
+      jQuery("#exclusive").unitegallery({
+        gallery_theme: "tiles",
+        tiles_col_width: 350,
+        tile_enable_border: true,			//enable border of the tile
+
+        tiles_space_between_cols: 20,
+        tile_enable_outline: true,			//enable outline of the tile (works only together with the border)
+        tile_outline_color: "#8B8B8B",		//tile outline color
+
+        tile_enable_shadow: true,			//enable shadow of the tile
+
       });
     }); 
   </script>

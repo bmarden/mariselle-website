@@ -67,13 +67,14 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 @permission_required("main.patreon")
 def gallery(request):
-    pic_list = models.Picture.objects.all()
+    pics = models.Picture.objects.all()
+    # pic_list = models.Picture.objects.all()
     # Display 10 images before paginating to next page
-    paginator = Paginator(pic_list, 10)
+    # paginator = Paginator(pic_list, 10)
 
-    # Setup how paginator works
-    page = request.GET.get("page")
-    pics = paginator.get_page(page)
+    # # Setup how paginator works
+    # page = request.GET.get("page")
+    # pics = paginator.get_page(page)
     return render(request, "main/gallery.html", {"pics": pics})
 
 

@@ -34,7 +34,7 @@
 <header class="masthead">
   <div class="container d-flex h-100 align-items-center">
     <h1 class="mx-auto my-0 text-uppercase">Lala Mariselle</h1>
-    <h2 class="text-white-50 mx-auto mt-2 mb-5">Welcome to the homepage for Lala Mariselle, scrool down to see more
+    <h2 class="text-white-50 mx-auto mt-2 mb-5">Welcome to the homepage for Lala Mariselle, scroll down to see more
       pics and find out more about her! </h2>
   </div>
 </header>
@@ -71,8 +71,9 @@
             <p class="mb-0 text-white-50">For information on booking and how to further contact me, please
               click the link below and fill out the form details. To be able to login, come support me on Patreon!
             </p>
+            <hr class="d-none d-lg-block mb-4 ml-0">
             <a href="{% url 'booking' %}" class="btn btn-primary">Booking</a>
-            <hr class="d-none d-lg-block mb-0 ml-0">
+
           </div>
         </div>
       </div>
@@ -82,8 +83,8 @@
   <div class="row justify-content-center no-gutters">
     <div class="col-md-6">
 
-      <!-- style="max-height: 80%" -->
-      <img class="img-fluid" src="{% static 'images/DSC02510.jpg' %}" alt="">
+
+      <img class="img-fluid max-width: 75%" src="{% static 'images/DSC02510.jpg' %}" alt="">
     </div>
 
     <div class="col-lg-6 order-lg-first">
@@ -94,8 +95,9 @@
             <p class="mb-0 text-white-50">Follow this link to support me on Patreon. By supporting me you will get
               behind the scenes pictures, exclusive photos and more!
             </p>
+            <hr class="d-none d-lg-block mb-4 mr-0">
             <a href="https://www.patreon.com/lalamariselle" target="blank" class="btn btn-primary">Patreon</a>
-            <hr class="d-none d-lg-block mb-0 mr-0">
+
           </div>
         </div>
       </div>
@@ -123,28 +125,15 @@
   {% endfor %}
 </section>
 
-
-<div id="gallery" style="display:none;">
-  {% for pic in pic_list %}
-  <img src="{{ pic.img.url }}" alt="" data-image="{{ pic.img.url }}" data-description="#">
-  {% endfor %}
-
-</div>
-
-<!-- <section id="gallery" class="projects-section bg-light justify-content-center">
+<section id="gallery" class="projects-section bg-light justify-content-center">
   <h2 class="text-center mb-4">Gallery</h2>
-  <div class="col-md-12 py-4">
-    <div id="galleryPics" class="row">
-      <div style="column-count: 4">
-        {% for pic in pic_list %}
-        <a href="{{ pic.img.url }}" data-toggle="lightbox" data-gallery="mixedgallery">
-          <img class="img-fluid mb-4" src="{{ pic.img.url }}">
-        </a>
-        {% endfor %}
-      </div>
-    </div>
+  <div id="galleryHome" style="display:none;">
+    {% for pic in pic_list %}
+    <img src="{{ pic.img.url }}" alt="{{ pic.title }}" data-image="{{ pic.img.url }}"
+      data-description="{{ pic.description }}">
+    {% endfor %}
   </div>
-</section> -->
+</section>
 
 <footer class="bg-black small text-center text-white-50">
   <div class="container">

@@ -18,7 +18,8 @@ class Picture(models.Model):
 
 # Model for images posted on the home page
 class HomePicture(models.Model):
-    title = models.TextField()
+    title = models.TextField(max_length=250)
+    description = models.TextField(default='')
     img = models.ImageField(upload_to="home_images/")
 
     # Return string for title
